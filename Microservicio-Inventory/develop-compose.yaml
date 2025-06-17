@@ -1,0 +1,14 @@
+services:
+  hotech_mysql:
+    image: 'mysql:latest'
+    ports:
+      - "3304:3306" #Base de datos, solo cambiar el primero
+    environment:
+      MYSQL_ROOT_PASSWORD: securepassword123
+      MYSQL_PASSWORD: securepassword123
+      MYSQL_DATABASE: hotech_backend
+#    restart: on-failure
+#    healthcheck:
+#      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+#      timeout: 5s
+#      retries: 3
