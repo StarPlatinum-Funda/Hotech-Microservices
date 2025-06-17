@@ -1,0 +1,28 @@
+services:
+  hotech:
+    build: ./
+    image: ryzeon/hotech:latest
+    mem_limit: 512m
+    ports:
+      - "8045:8045"
+    environment:
+      DB_URL: jdbc:mysql://hotech_mysql:3306/hotech_backend?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_USERNAME: root
+      DB_PASSWORD: securepassword123
+    restart: always
+    depends_on:
+      hotech_mysql:
+        condition: service_healthy
+  hotech_mysql:
+    image: 'mysql:latest'
+    ports:
+      - "3309:3309"
+    environment:
+      MYSQL_ROOT_PASSWORD: securepassword123
+      MYSQL_PASSWORD: securepassword123
+      MYSQL_DATABASE: hotech_backend
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
