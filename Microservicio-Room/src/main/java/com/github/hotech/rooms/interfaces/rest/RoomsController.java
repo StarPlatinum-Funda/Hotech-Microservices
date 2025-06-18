@@ -88,7 +88,7 @@ public class RoomsController {
 
     @Operation(summary = "Returns all rooms asociated with the given id")
     @GetMapping("/{userId}")
-    public ResponseEntity<List<RoomResource>> getAllRoomsByUserId(@RequestParam Long userId) {
+    public ResponseEntity<List<RoomResource>> getAllRoomsByUserId(@PathVariable Long userId) {
         if (userId == null || userId <= 0) {
             return ResponseEntity.badRequest().build();
         }
@@ -103,7 +103,7 @@ public class RoomsController {
 
     @Operation(summary = "Returns all rooms with the given type")
     @GetMapping("/{type}")
-    public ResponseEntity<List<RoomResource>> getAllRoomsByType(@RequestParam String type){
+    public ResponseEntity<List<RoomResource>> getAllRoomsByType(@PathVariable String type){
 
         try {
             RoomType.valueOf(type);
