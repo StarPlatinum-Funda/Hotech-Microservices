@@ -1,6 +1,5 @@
 package com.github.hotech.iam.interfaces.rest;
 
-
 import com.github.hotech.iam.domain.model.commands.RefreshTokenCommand;
 import com.github.hotech.iam.domain.services.UserCommandService;
 import com.github.hotech.iam.interfaces.rest.resources.AuthenticatedUserResource;

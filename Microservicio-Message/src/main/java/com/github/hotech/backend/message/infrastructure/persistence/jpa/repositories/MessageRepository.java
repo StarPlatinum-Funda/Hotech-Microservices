@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    boolean existsByMessage(Long id);
+    boolean existsById(Long id);
     List<Message> getMessageByNotificationIdAndUserAccountId(NotificationId notificationId, UserAccountId userAccountId);
 }

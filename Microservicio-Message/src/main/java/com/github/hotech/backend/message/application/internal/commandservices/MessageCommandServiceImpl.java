@@ -27,7 +27,7 @@ public class MessageCommandServiceImpl implements MessageCommandService {
 
     @Override
     public Optional<Message> handle(CreateMessageCommand command) {
-        if(messageRepository.existsByMessage(command.id())) {
+        if(messageRepository.existsById(command.id())) {
             throw new IllegalArgumentException("Message with " + command.id() + " already exists");
         }
         var message = new Message(command);

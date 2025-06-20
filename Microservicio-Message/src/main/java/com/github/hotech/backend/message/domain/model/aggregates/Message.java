@@ -29,7 +29,7 @@ public class Message extends AuditableAbstractAggregateRoot<Message> {
     @Getter
     private String content;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     @Getter
     private MessageStatus status;
 
@@ -46,6 +46,9 @@ public class Message extends AuditableAbstractAggregateRoot<Message> {
             @AttributeOverride(name = "userAccountId", column = @Column(name = "user_accounts_id"))
     })
     private UserAccountId userAccountId;
+
+    public Message() {
+    }
 
     public Message(Long notificationId, Long userAccountId) {
         this.notificationId = new NotificationId(notificationId);
