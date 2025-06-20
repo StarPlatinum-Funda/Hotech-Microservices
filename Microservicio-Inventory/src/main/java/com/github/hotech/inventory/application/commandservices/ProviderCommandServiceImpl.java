@@ -6,6 +6,8 @@ import com.github.hotech.inventory.domain.model.commands.UpdateProviderCommand;
 import com.github.hotech.inventory.domain.services.ProviderCommandService;
 import com.github.hotech.inventory.infrastructure.persistence.jpa.repositories.ItemRepository;
 import com.github.hotech.inventory.infrastructure.persistence.jpa.repositories.ProviderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class ProviderCommandServiceImpl implements ProviderCommandService {
 
     private final ProviderRepository providerRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public ProviderCommandServiceImpl(ProviderRepository providerRepository, ItemRepository itemRepository) {
         this.providerRepository = providerRepository;

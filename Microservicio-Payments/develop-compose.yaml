@@ -2,7 +2,7 @@ services:
   hotech_mysql:
     image: 'mysql:latest'
     ports:
-      - "3303:3306"
+      - "3302:3306"
     environment:
       MYSQL_ROOT_PASSWORD: securepassword123
       MYSQL_PASSWORD: securepassword123

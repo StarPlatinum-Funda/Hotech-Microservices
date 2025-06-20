@@ -7,11 +7,19 @@ import com.github.hotechbackend.payments.domain.model.commands.UpdatePaymentComm
 import com.github.hotechbackend.payments.domain.model.valueobjects.PaymentMethod;
 import com.github.hotechbackend.payments.domain.services.PaymentCommandService;
 import com.github.hotechbackend.payments.infrastructure.persistence.jpa.repositories.PaymentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class PaymentCommandServiceImpl implements PaymentCommandService {
+
     private final PaymentRepository paymentRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public PaymentCommandServiceImpl(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;

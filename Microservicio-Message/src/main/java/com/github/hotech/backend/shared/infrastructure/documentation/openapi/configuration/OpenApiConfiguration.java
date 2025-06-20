@@ -39,7 +39,7 @@ public class OpenApiConfiguration {
         if (isRunningInProd) {
             openApi.servers(Collections.singletonList(new Server().url("https://inncontrol-api.ryzeon.me")));
         } else {
-            openApi.servers(Collections.singletonList(new Server().url("http://localhost:8080")));
+            openApi.servers(Collections.singletonList(new Server().url("http://localhost:8003")));
         }
 
         final String securitySchemeName = "bearerAuth";

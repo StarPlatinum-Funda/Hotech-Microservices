@@ -6,6 +6,8 @@ import com.github.hotech.inventory.domain.model.commands.DeleteItemsCommand;
 import com.github.hotech.inventory.domain.model.commands.UpdateInventoryCommand;
 import com.github.hotech.inventory.domain.services.InventoryCommandService;
 import com.github.hotech.inventory.infrastructure.persistence.jpa.repositories.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class InventoryCommandServiceImpl implements InventoryCommandService {
 
     private final ItemRepository itemRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public InventoryCommandServiceImpl(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;

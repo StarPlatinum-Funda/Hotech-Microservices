@@ -5,10 +5,12 @@ import com.github.hotechbackend.payments.domain.model.queries.GetAllPaymentsQuer
 import com.github.hotechbackend.payments.domain.model.queries.GetPaymentByIdQuery;
 import com.github.hotechbackend.payments.domain.services.PaymentQueryService;
 import com.github.hotechbackend.payments.infrastructure.persistence.jpa.repositories.PaymentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PaymentQueryServiceImpl implements PaymentQueryService {
     private final PaymentRepository paymentRepository;
 

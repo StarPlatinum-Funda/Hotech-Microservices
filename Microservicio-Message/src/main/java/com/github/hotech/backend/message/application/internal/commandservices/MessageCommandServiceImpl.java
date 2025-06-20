@@ -7,12 +7,19 @@ import com.github.hotech.backend.message.domain.model.commands.MarkMessageAsRead
 import com.github.hotech.backend.message.domain.model.commands.UpdateMessageCommand;
 import com.github.hotech.backend.message.domain.services.MessageCommandService;
 import com.github.hotech.backend.message.infrastructure.persistence.jpa.repositories.MessageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class MessageCommandServiceImpl implements MessageCommandService {
 
     private final MessageRepository messageRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public MessageCommandServiceImpl(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;

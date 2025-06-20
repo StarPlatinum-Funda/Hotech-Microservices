@@ -5,6 +5,8 @@ import com.github.hotech.inventory.domain.model.commands.CreateWarehouseCommand;
 import com.github.hotech.inventory.domain.model.commands.UpdateWarehouseCommand;
 import com.github.hotech.inventory.domain.services.WarehouseCommandService;
 import com.github.hotech.inventory.infrastructure.persistence.jpa.repositories.WarehouseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,6 +15,9 @@ import java.util.Optional;
 public class WarehouseCommandServiceImpl implements WarehouseCommandService {
 
     private final WarehouseRepository  warehouseRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public WarehouseCommandServiceImpl(WarehouseRepository warehouseRepository) {
         this.warehouseRepository = warehouseRepository;

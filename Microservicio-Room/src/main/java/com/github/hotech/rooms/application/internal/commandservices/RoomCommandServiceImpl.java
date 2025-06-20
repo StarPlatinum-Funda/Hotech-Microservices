@@ -6,6 +6,8 @@ import com.github.hotech.rooms.domain.model.commands.DeleteRoomCommand;
 import com.github.hotech.rooms.domain.model.commands.UpdateRoomCommand;
 import com.github.hotech.rooms.domain.services.RoomCommandService;
 import com.github.hotech.rooms.infrastructure.persistence.jpa.repositories.RoomRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class RoomCommandServiceImpl implements RoomCommandService {
 
     private final RoomRepository roomRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     public RoomCommandServiceImpl(RoomRepository roomRepository) {
         this.roomRepository = roomRepository;
