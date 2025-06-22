@@ -32,6 +32,6 @@ public class TaskQueryServiceImpl implements TaskQueryService {
 
     @Override
     public List<Task> handle(GetAllTaskForRoomQuery query) {
-        return taskRepository.findAllByEmployee(query.roomIdentifier());
+        return taskRepository.findAllByRoom(query.roomIdentifier());
     }
 }

@@ -1,0 +1,9 @@
+server:
+  port: 8007
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: task
+      auto-offset-reset: earliest
