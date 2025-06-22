@@ -1,4 +1,4 @@
-package com.github.hotechbackend.payments.infrastructure.listeners;
+package com.github.hotechbackend.reports.infrastructure.listeners;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -19,7 +19,7 @@ public class KafkaConsumerConifg {
     public ConsumerFactory<String, Object> consumerFactory(){
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "payment");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "report");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(), new JsonDeserializer<>(Object.class));

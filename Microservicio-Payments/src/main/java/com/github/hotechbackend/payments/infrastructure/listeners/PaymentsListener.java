@@ -23,7 +23,7 @@ public class PaymentsListener {
     }
     */
 
-    @KafkaListener(topics = "item-topic", groupId = "payment", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "payment-topic", groupId = "payment", containerFactory = "kafkaListenerContainerFactory")
     public void reciveItem(Map<String, Object> val){
         item = val;
         var id = (Number)item.get("id");

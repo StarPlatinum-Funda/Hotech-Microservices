@@ -5,5 +5,5 @@ spring:
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: inventory
+      group-id: profile
       auto-offset-reset: earliest

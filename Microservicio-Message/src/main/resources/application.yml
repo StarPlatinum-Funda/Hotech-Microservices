@@ -1,9 +1,9 @@
 server:
-  port: 8005
+  port: 8003
 
 spring:
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
-      group-id: room
+      group-id: message
       auto-offset-reset: earliest

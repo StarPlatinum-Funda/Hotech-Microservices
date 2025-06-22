@@ -23,7 +23,7 @@ public class RoomListener {
     }
     */
 
-    @KafkaListener(topics = "item-topic", groupId = "room", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "room-topic", groupId = "room", containerFactory = "kafkaListenerContainerFactory")
     public void reciveItem(Map<String, Object> val){
         item = val;
         var id = (Number)item.get("id");
