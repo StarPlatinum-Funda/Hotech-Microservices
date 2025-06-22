@@ -1,0 +1,9 @@
+server:
+  port: 8006
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: report
+      auto-offset-reset: earliest

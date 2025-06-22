@@ -2,7 +2,7 @@ services:
   hotech_mysql:
     image: 'mysql:latest'
     ports:
-      - "3301:3306"
+      - "3306:3306" #Base de datos, solo cambiar el primero
     environment:
       MYSQL_ROOT_PASSWORD: securepassword123
       MYSQL_PASSWORD: securepassword123

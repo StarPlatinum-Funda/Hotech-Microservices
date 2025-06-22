@@ -3,7 +3,7 @@
 ## Summary 
 Hotech Platform, illustrating development with Java, Spring Boot Framework, and Spring Data JPA on MySQL Database. It also illustrates open-api documentation configuration and integration with Swagger UI.
 
-Accesible towards: http://localhost:8080/swagger-ui/index.html
+Accesible towards: http://localhost:8001/swagger-ui/index.html
 
 ## Instructions
 - Delete bounded context but: IAM, Shared and your Microservice
