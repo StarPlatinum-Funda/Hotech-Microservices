@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -31,6 +32,15 @@ public class RoomCommandServiceImpl implements RoomCommandService {
         }
         var room = new Room(command);
         roomRepository.save(room);
+
+        //Sends notification for created room to kafka
+        var message = Map.of(
+                "roomNumber", room.getRoomNumber(),
+                "id", room.getId(),
+                "userId", command.userId()
+        );
+        kafkaTemplate.send("create-message", message);
+
         return Optional.of(room);
     }
 
