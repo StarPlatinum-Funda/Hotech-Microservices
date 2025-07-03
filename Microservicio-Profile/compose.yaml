@@ -11,7 +11,7 @@ services:
       #DB_URL: jdbc:mysql://profile_db:3306/hotech_backend?createDatabaseIfNotExist=true&serverTimezone=UTC
       #DB_USERNAME: root
       #DB_PASSWORD: securepassword123
-    #?restart: always
+    restart: on-failure
     depends_on:
       - profile_db
     networks:

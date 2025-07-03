@@ -1,28 +1,32 @@
 services:
-  hotech:
-    build: ./
-    image: ryzeon/hotech:latest
-    mem_limit: 512m
+  hotech_room:
+    build: .
+    container_name: room_container
+    image: hotech_room
     ports:
-      - "8045:8045"
-    environment:
-      DB_URL: jdbc:mysql://hotech_mysql:3306/hotech_backend?createDatabaseIfNotExist=true&serverTimezone=UTC
-      DB_USERNAME: root
-      DB_PASSWORD: securepassword123
-    restart: always
+      - "8005:8005"
+    #environment:
+    #  DB_URL: jdbc:mysql://room_db:3306/hotech_backend?createDatabaseIfNotExist=true&serverTimezone=UTC
+    #  DB_USERNAME: root
+    #  DB_PASSWORD: securepassword123
+    restart: on-failure
     depends_on:
-      hotech_mysql:
-        condition: service_healthy
-  hotech_mysql:
+      - room_db
+    networks:
+      - red-microservices
+
+  room_db:
+    container_name: room_db
     image: 'mysql:latest'
     ports:
-      - "3309:3309"
+      - "3305:3306"
     environment:
       MYSQL_ROOT_PASSWORD: securepassword123
       MYSQL_PASSWORD: securepassword123
       MYSQL_DATABASE: hotech_backend
-    restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 10s
-      retries: 10
+    networks:
+      - red-microservices
+
+networks:
+  red-microservices:
+    external: true
