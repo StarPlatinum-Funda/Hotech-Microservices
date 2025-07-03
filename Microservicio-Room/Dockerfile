@@ -7,7 +7,7 @@ WORKDIR /app
 COPY target/Hotech-backend-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose the application's port
-EXPOSE 8001
+EXPOSE 8005
 
 # Run the application
 ENTRYPOINT ["java","-jar","app.jar"]

@@ -1,5 +1,6 @@
 version: '3'
 services:
+  #---------------------MESSAGE BROKER--------------------
   zookeeper:
     image: confluentinc/cp-zookeeper:7.6.0
     environment:
@@ -23,6 +24,7 @@ services:
     networks:
       - red-microservices
       
+  #------------------DATABASES----------------------------
   profile_db:
     container_name: profile_db
     image: 'mysql:latest'
@@ -35,6 +37,31 @@ services:
     networks:
       - red-microservices
 
+  message_db:
+    container_name: message_db
+    image: 'mysql:latest'
+    ports:
+      - "3303:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: securepassword123
+      MYSQL_PASSWORD: securepassword123
+      MYSQL_DATABASE: hotech_backend
+    networks:
+      - red-microservices
+
+  room_db:
+    container_name: room_db
+    image: 'mysql:latest'
+    ports:
+      - "3305:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: securepassword123
+      MYSQL_PASSWORD: securepassword123
+      MYSQL_DATABASE: hotech_backend
+    networks:
+      - red-microservices
+
+  #-------------------------MICROSERVICES----------------------------
   hotech_profile:
     container_name: profile_container
     image: hotech_profile
@@ -46,15 +73,14 @@ services:
     networks:
       - red-microservices
 
-  room_db:
-    container_name: room_db
-    image: 'mysql:latest'
+  hotech_message:
+    container_name: message_container
+    image: hotech_message
     ports:
-      - "3302:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: securepassword123
-      MYSQL_PASSWORD: securepassword123
-      MYSQL_DATABASE: hotech_backend
+      - "8003:8003"
+    restart: on-failure
+    depends_on:
+      - message_db
     networks:
       - red-microservices
 
@@ -69,6 +95,9 @@ services:
     networks:
       - red-microservices
 
+  #-------------------------API GATEWAY------------------------------
+
+#-----------------------NETWORKS-------------------------------
 networks:
   red-microservices:
     external: true
