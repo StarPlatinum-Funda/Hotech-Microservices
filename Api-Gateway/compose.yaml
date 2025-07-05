@@ -1,0 +1,14 @@
+services:
+  hotech_api_gateway:
+    build: .
+    container_name: api_gateway_container
+    image: hotech_api_gateway
+    ports:
+      - "9101:9101"
+    restart: on-failure
+    networks:
+      - red-microservices
+
+networks:
+  red-microservices:
+    external: true

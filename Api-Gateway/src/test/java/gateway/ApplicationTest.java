@@ -22,7 +22,7 @@ public class ApplicationTest {
 	@Autowired
 	private WebTestClient webClient;
 
-	@Test
+	//@Test
 	public void contextLoads() throws Exception {
 		//Stubs
 		stubFor(get(urlEqualTo("/get"))

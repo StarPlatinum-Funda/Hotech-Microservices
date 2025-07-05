@@ -49,6 +49,18 @@ services:
     networks:
       - red-microservices
 
+  inventory_db:
+    container_name: inventory_db
+    image: 'mysql:latest'
+    ports:
+      - "3304:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: securepassword123
+      MYSQL_PASSWORD: securepassword123
+      MYSQL_DATABASE: hotech_backend
+    networks:
+      - red-microservices
+
   room_db:
     container_name: room_db
     image: 'mysql:latest'
@@ -84,6 +96,17 @@ services:
     networks:
       - red-microservices
 
+  hotech_inventory:
+    container_name: inventory_container
+    image: hotech_inventory
+    ports:
+      - "8004:8004"
+    restart: on-failure
+    depends_on:
+      - inventory_db
+    networks:
+      - red-microservices
+
   hotech_room:
     container_name: room_container
     image: hotech_room
@@ -96,6 +119,14 @@ services:
       - red-microservices
 
   #-------------------------API GATEWAY------------------------------
+  hotech_api_gateway:
+    container_name: api_gateway_container
+    image: hotech_api_gateway
+    ports:
+      - "9101:9101"
+    restart: on-failure
+    networks:
+      - red-microservices
 
 #-----------------------NETWORKS-------------------------------
 networks:

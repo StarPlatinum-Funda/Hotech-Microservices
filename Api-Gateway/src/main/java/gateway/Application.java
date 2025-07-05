@@ -36,7 +36,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8001")) //Microservicio original
+						.uri("http://hotech_profile:8001")) //Microservicio original
 				//PAYMENT
 				.route(p->p
 						.path("/MSPayment/**") //Nombre a donde enviar
@@ -46,7 +46,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8002")) //Microservicio original
+						.uri("http://hotech_payment:8002")) //Microservicio original
 				//MESSAGE
 				.route(p->p
 						.path("/MSMessage/**") //Nombre a donde enviar
@@ -56,7 +56,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8003")) //Microservicio original
+						.uri("http://hotech_message:8003")) //Microservicio original
 				//INVENTORY
 				.route(p->p
 						.path("/MSInventory/**") //Nombre a donde enviar
@@ -66,7 +66,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8004")) //Microservicio original
+						.uri("http://hotech_inventory:8004")) //Microservicio original
 				//ROOM
 				.route(p->p
 						.path("/MSRoom/**") //Nombre a donde enviar
@@ -76,7 +76,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8005")) //Microservicio original
+						.uri("http://hotech_room:8005")) //Microservicio original
 				//REPORT
 				.route(p->p
 						.path("/MSReport/**") //Nombre a donde enviar
@@ -86,7 +86,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8006")) //Microservicio original
+						.uri("http://hotech_report:8006")) //Microservicio original
 				//TASK
 				.route(p->p
 						.path("/MSTask/**") //Nombre a donde enviar
@@ -96,7 +96,7 @@ public class Application {
 									System.out.println("Request Path: " + exchange.getRequest().getPath());
 									return chain.filter(exchange);
 								}))
-						.uri("http://localhost:8007")) //Microservicio original
+						.uri("http://hotech_task:8007")) //Microservicio original
 				.build();
 	}
 }
