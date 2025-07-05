@@ -73,8 +73,8 @@ services:
     networks:
       - red-microservices
 
-  #-------------------------MICROSERVICES----------------------------
-  hotech_profile:
+  #-------------------------MICROSERVICES----------------------------(Los servicios de los microservicios deben tener "-")
+  hotech-profile:
     container_name: profile_container
     image: christophermore/hotech_profile
     ports:
@@ -85,7 +85,7 @@ services:
     networks:
       - red-microservices
 
-  hotech_message:
+  hotech-message:
     container_name: message_container
     image: christophermore/hotech_message
     ports:
@@ -96,7 +96,7 @@ services:
     networks:
       - red-microservices
 
-  hotech_inventory:
+  hotech-inventory:
     container_name: inventory_container
     image: christophermore/hotech_inventory
     ports:
@@ -107,7 +107,7 @@ services:
     networks:
       - red-microservices
 
-  hotech_room:
+  hotech-room:
     container_name: room_container
     image: christophermore/hotech_room
     ports:
@@ -119,7 +119,7 @@ services:
       - red-microservices
 
   #-------------------------API GATEWAY------------------------------
-  hotech_api_gateway:
+  hotech-api-gateway:
     container_name: api_gateway_container
     image: christophermore/hotech_api_gateway
     ports:
